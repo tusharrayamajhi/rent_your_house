@@ -1,0 +1,68 @@
+body{
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100vh !important;
+}
+.container{
+    flex: 1 !important;
+}
+.fa-snowflake{
+    font-size: 3rem;
+    color:#FF5A5F;
+}
+.navbar{
+    height: 5rem;
+    background-color: #ffff;
+}
+.nav-link{
+    color: #222222 !important;
+}
+footer{
+    height: 9rem;
+    background-color:rgb(237, 236, 236);
+}
+.footer div{
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer .copy{
+    font-size: 1.1rem;
+}
+.f-info-social i{
+    font-size: 1.2rem;
+    margin-left: 1rem;
+}
+.f-info-links a{
+ text-decoration: none;
+ color: #000000;
+ margin-left: 0.5rem;
+ font-size: 1.1rem;
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+.f-card-show-link{
+    text-decoration: none;
+}
+.cards{
+    height: 25rem !important;
+    border: none !important;
+}
+.card-img-top{
+    height: 20rem;
+    width: 100%;
+    border-radius: 1rem !important;
+}
+.card-body{
+    padding: 0px !important;
+}
+.card-img-overlay{
+    height: 20rem;
+}
+.card-img-overlay:hover{
+    background-color: #dadada;
+    opacity: 0.3;
+
+}

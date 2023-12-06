@@ -1,0 +1,38 @@
+<% layout('layouts/boilerplate') -%>
+<body>
+    <div class="row offset-md-2">
+<div class="col col-md-8">
+    <form action="/listing/<%= list.id  %>/edit?_method=PUT" method="post"  class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="title" class="form-lable">Title</label>
+            <input type="text" name="title" id="title" placeholder="title" value="<%= list.title %>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="des" class="form-label">Description</label>
+            <input type="text" name="description" id="des" placeholder="description" value="<%= list.description %>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="text" name="image" id="image" placeholder="image" value="<%= list.image %>" class="form-control" required>
+        </div>
+        <div class="row ">
+            <div class="mb-3 col-md-4">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" name="price" id="price" placeholder="price" value="<%= list.price %>" class="form-control" required>
+        </div>
+        <div class="mb-3 col-md-4">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" name="location" id="location" plceholder="location" value="<%= list.location %>" class="form-control" required>
+        </div>
+        <div class="mb-3 col-md-4">
+            <label for="country" class="form-label">country</label>
+            <input type="text" name="country" id="country" plceholder="country" value="<%= list.country %>" class="form-control" required>
+        </div>
+        </div>
+        
+        <button type="submit" class="btn btn-secondary">edit</button>
+    </form>
+</div>
+    </div>
+</body>
+<script src="/js/formvalidate.js"></script>
