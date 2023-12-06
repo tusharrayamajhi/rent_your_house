@@ -1,3 +1,6 @@
+if(process.env.NODE_ENV != "production"){
+  require("dotenv").config();
+}
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -19,7 +22,7 @@ app.set("view engine", "ejs");
 app.engine("ejs", ejsMate);
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/hotel");
+  await mongoose.connect(process.env.ATLASURL);
 }
 main()
   .then(() => {
