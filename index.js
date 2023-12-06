@@ -22,7 +22,7 @@ app.set("view engine", "ejs");
 app.engine("ejs", ejsMate);
 
 async function main() {
-  await mongoose.connect(process.env.ATLASURL);
+  await mongoose.connect(`${process.env.ATLASURL}`);
 }
 main()
   .then(() => {
