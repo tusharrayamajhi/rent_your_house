@@ -28,7 +28,7 @@ main()
   .then(() => {
     console.log("databse is connected");
   })
-  .catch((err,next) => {
+  .catch((err, req, res, next) => {
     next(err);
   });
 
