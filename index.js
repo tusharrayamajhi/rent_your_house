@@ -29,6 +29,7 @@ main()
     console.log("databse is connected");
   })
   .catch((err, req, res, next) => {
+    console.log(err);
     next(err);
   });
 
