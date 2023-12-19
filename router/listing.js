@@ -4,7 +4,7 @@ const { listingSchema} = require("../Schemavalidate.js");
 
 const wrapAsync = require("../utils/wrapAsync.js");
 const listing = require("../models/listing.js");
-
+const {islogedin,isuserexits,redirectUrl, isOwner} = require("../middleware.js");
 
 const validlisting = (err,req, res, next) => {
     let {error}= listingSchema.validate(req.body);
@@ -26,6 +26,7 @@ router.get(
 );
 router.post(
   "/",
+  islogedin,
   validlisting,
   wrapAsync(async (req, res, next) => {
     const { title, description, image, price, location, country } = req.body;
@@ -36,24 +37,26 @@ router.post(
       price: price,
       location: location,
       country: country,
+      owner:req.user._id
     });
     await list.save();
     res.redirect("/listing");
   })
 );
-router.get("/new", (req, res) => {
+router.get("/new",islogedin,(req, res) => {
   res.render("listing/newlisting");
 });
 router.get(
   "/:id",
   wrapAsync(async (req, res) => {
     let { id } = req.params;
-    const list = await listing.findById(id).populate("reviews");
+    const list = await listing.findById(id).populate({path:"reviews",populate:{path:"reviewowner"}}).populate("owner");
     res.render("listing/show", { list });
   })
 );
 router.put(
   "/:id/edit",
+  islogedin,isOwner,
   validlisting,
   wrapAsync(async (req, res) => {
     const { id } = req.params;
@@ -64,6 +67,7 @@ router.put(
 );
 router.get(
   "/:id/edit",
+  islogedin,isOwner,
   wrapAsync(async (req, res) => {
     const { id } = req.params;
     const list = await listing.findById(id);
@@ -72,6 +76,7 @@ router.get(
 );
 router.delete(
   "/:id",
+  islogedin,isOwner,
   wrapAsync(async (req, res) => {
     const { id } = req.params;
     await listing.findByIdAndDelete(id);
