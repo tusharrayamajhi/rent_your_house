@@ -15,7 +15,7 @@ router.post(
   "/signup",
   isuserexits,
   wrapAsync(async (req, res) => {
-    let userdata = new user({
+      let userdata = new user({
       username: req.body.username,
       email: req.body.email,
     });

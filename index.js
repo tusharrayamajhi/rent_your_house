@@ -1,6 +1,6 @@
-// if(process.env.NODE_ENV != "production"){
-//   require("dotenv").config();
-// }
+if(process.env.NODE_ENV != "production"){
+  require("dotenv").config();
+}
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -17,8 +17,6 @@ const user = require("./models/user.js");
 const passportLocalStragity = require("passport-local");
 const passport = require("passport");
 
-
-
 app.use(express.static(path.join(__dirname, "public")));
 app.use(methodoverrider("_method"));
 app.use(express.urlencoded({ extended: true }));
@@ -29,7 +27,7 @@ app.set("view engine", "ejs");
 app.engine("ejs", ejsMate);
 
 async function main() {
-  // 'mongodb://127.0.0.1:27017/test'
+  // 'mongodb://127.0.0.1:27017/hotel'
   // `${process.env.ATLASURL}`
   await mongoose.connect(`${process.env.ATLASURL}`);
 }

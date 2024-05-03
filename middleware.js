@@ -34,5 +34,4 @@ module.exports.isreviewOwner = async(req,res,next) =>{
         return next();
     }
     res.redirect(`/listing/${id}`);
-
 }
